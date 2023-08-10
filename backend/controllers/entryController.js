@@ -18,6 +18,7 @@ const getEntry = async (req, res) => {
   if (!entry) {
     return res.status(404).json({error: 'No such entry'})
   }
+  res.status(200).json(entry)
 }
 
 // create a new entry

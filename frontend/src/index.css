@@ -26,6 +26,7 @@ header a {
   color: #1d1c1c;
   text-decoration: none;
 }
+/* center navbar */
 .nav-center {
   flex-grow: 1;
   text-align: center;
@@ -37,4 +38,9 @@ header a {
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
+}
+.entries a{
+  color: #1d1c1c;
+  text-decoration: none;
+
 }

@@ -6,6 +6,8 @@ const entryRoutes = require('./routes/entries')
 
 const app = express()
 
+app.use(express.json())
+
 //routes
 app.use('/entries', entryRoutes)
 
