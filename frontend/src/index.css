@@ -32,15 +32,71 @@ header a {
   text-align: center;
 }
 .nav-center a {
-  margin: 0;
+  font-size: 2.0rem;
 }
 .pages{
   max-width: 1400px;
   padding: 20px;
   margin: 0 auto;
 }
+.home {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  gap: 200px;
+}
+.entries{
+  width: 100%;
+  margin: 20px auto;
+  margin-left: -10px;
+  padding: 20px;
+}
+.entries-list{
+  margin: 10px auto;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d1d1;
+}
 .entries a{
   color: #1d1c1c;
   text-decoration: none;
-
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+.delete-button {
+  color: #e7195a;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  padding: 10px;
+}
+/* New entry form */
+.input-box,
+.textarea-box {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-family: "Poppins";
+  font-size: 16px;
+}
+.textarea-box {
+  resize: vertical;
+  height: 150px; /* Adjust as needed */
+}
+.add-entry-button {
+  background-color: #1aac83; /* Background color */
+  color: white; /* Text color */
+  border: none;
+  padding: 10px 20px; /* Padding for the button */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Transition effect */
+}
+.add-entry-button:hover {
+  background-color: #14986b; /* Darker background on hover */
 }

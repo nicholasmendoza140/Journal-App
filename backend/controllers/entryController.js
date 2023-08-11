@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 // get all entries
 const getEntries = async (req, res) => {
-  const entries = await Entry.find({})
+  const entries = await Entry.find({}).sort({createdAt: -1})
   res.status(200).json(entries)
 }
 

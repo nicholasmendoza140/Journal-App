@@ -6,7 +6,7 @@ const Navbar = () => {
           <div className="container">
             <div className="nav-center">
               <Link to="/">
-                <h1 style={{textAlign: 'center'}}>JOTFUL</h1>
+                JOTFUL
               </Link>
             </div>
           </div>

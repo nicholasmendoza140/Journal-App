@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useEntriesContext } from '../hooks/useEntriesContext'
 
 const EntryForm = () => {
+    const {dispatch} = useEntriesContext()
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [error, setError] = useState(null)
@@ -26,6 +28,7 @@ const EntryForm = () => {
             setBody('')
             setError(null)
             console.log('New entry added', json)
+            dispatch({type: 'CREATE_ENTRY', payload: json})
         }
     }
 
@@ -35,18 +38,19 @@ const EntryForm = () => {
             <label>Title:</label>
             <input 
                 type="text" 
+                className="input-box"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
             ></input>
 
             <label>Body:</label>
-            <input 
-                type="text" 
+            <textarea
+                className="input-box textarea-box"
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
-            ></input>
+            ></textarea>
 
-            <button>Add Entry</button>
+            <button className="add-entry-button">Add Entry</button>
             {error && <div className="error">{error}</div>}
         </form>
     )
