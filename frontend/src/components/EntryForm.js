@@ -6,6 +6,7 @@ const EntryForm = () => {
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [error, setError] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,11 +23,13 @@ const EntryForm = () => {
 
         if (!response.ok) {
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
             setTitle('')
             setBody('')
             setError(null)
+            setEmptyFields([])
             console.log('New entry added', json)
             dispatch({type: 'CREATE_ENTRY', payload: json})
         }
@@ -48,10 +51,16 @@ const EntryForm = () => {
                 className="input-box textarea-box"
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      setBody(prevBody => prevBody + '\n');
+                    }
+                  }}
             ></textarea>
 
             <button className="add-entry-button">Add Entry</button>
-            {error && <div className="error">{error}</div>}
+            {error && <div className="error">{error + emptyFields.join(', ')}</div>}
         </form>
     )
 }

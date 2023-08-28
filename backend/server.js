@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const entryRoutes = require('./routes/entries')
+const userRoutes = require('./routes/user')
 
 const app = express()
 
@@ -10,6 +11,7 @@ app.use(express.json())
 
 //routes
 app.use('/entries', entryRoutes)
+app.use('/user', userRoutes)
 
 app.get('/', (req, res) => {
     res.json({msg: "Hello"})

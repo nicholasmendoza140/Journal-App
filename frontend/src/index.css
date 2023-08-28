@@ -65,7 +65,6 @@ header a {
   font-size: 1.2em;
 }
 .delete-button {
-  color: #e7195a;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -99,4 +98,36 @@ header a {
 }
 .add-entry-button:hover {
   background-color: #14986b; /* Darker background on hover */
+}
+.error {
+  color: var(--error);
+  margin-top: 10px;
+}
+/* Entry details page */
+.edit-button {
+  cursor: pointer;
+}
+
+.edit-textarea {
+  width: 100%;
+  padding: 8px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+.edit-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.save-button,
+.cancel-button {
+  background-color: #007bff;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
