@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import { useEntriesContext } from '../hooks/useEntriesContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 const EntryDetail = () => {
 
@@ -11,18 +12,25 @@ const EntryDetail = () => {
     const [error, setError] = useState(null)
 
     const {entries, dispatch} = useEntriesContext()
-
+    const {user} = useAuthContext()
 
     useEffect(() => {
         const fetchEntry = async () => {
-            const response = await fetch(`/entries/${entryId}`)
+            const response = await fetch(`/entries/${entryId}`, {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
             if (response.ok) {
                 dispatch({type: 'SET_ENTRIES', payload: json})
             }
         }
-        fetchEntry()
-    }, [entryId, dispatch, entries])
+        if (user) {
+            fetchEntry()
+        }
+        
+    }, [entryId, dispatch, entries, user])
     
     const handleClick =  () => {
         setEditMode(!editMode);
@@ -38,7 +46,8 @@ const EntryDetail = () => {
             method: 'PATCH',
             body: JSON.stringify({ body: editedBody }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
         console.log(JSON.stringify(newEntry))

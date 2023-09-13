@@ -1,17 +1,23 @@
 import {useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { useEntriesContext } from '../hooks/useEntriesContext'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 import EntryForm from '../components/EntryForm'
 
 const Home = () => {
 
     const {entries, dispatch} = useEntriesContext()
+    const {user} = useAuthContext()
     
 
     useEffect(() => {
         const fetchEntries = async () => {
-            const response = await fetch('/entries')
+            const response = await fetch('/entries', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
 
             if (response.ok) {
@@ -19,16 +25,19 @@ const Home = () => {
             }
         }
         fetchEntries()
-    }, [dispatch])
+    }, [dispatch, user])
 
     const handleClick = async (entry) => {
         const response = await fetch('/entries/' + entry._id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
         })
         const json = await response.json()
 
         if (response.ok) {
-            dispatch({type: 'DELETE_ENTRY', payload:json})
+            dispatch({type: 'DELETE_ENTRY', payload: json})
         }
 
     }

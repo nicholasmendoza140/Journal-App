@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 // get all entries
 const getEntries = async (req, res) => {
-  const entries = await Entry.find({}).sort({createdAt: -1})
+  const user_id = req.user._id
+  const entries = await Entry.find({user_id}).sort({createdAt: -1})
   res.status(200).json(entries)
 }
 
@@ -35,7 +36,8 @@ const createEntry = async (req, res) => {
       return res.status(400).json({error: 'Following fields are empty: ', emptyFields})
     }
     try {
-      const entry = await Entry.create({title, body})
+      const user_id = req.user._id
+      const entry = await Entry.create({title, body, user_id})
       res.status(200).json(entry)
     } catch (error) {
       res.status(400).json({error: error.message})
