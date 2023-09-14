@@ -1,5 +1,5 @@
 {
-  "proxy": "jotfull-backend1.onrender.com",
+  "proxy": "https://jotfull-backend1.onrender.com",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
