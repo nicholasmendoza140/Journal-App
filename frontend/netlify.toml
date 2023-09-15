@@ -1,4 +1,4 @@
 [[redirects]]
-    from = "/api/*"
-    to = "https://jotfull-backend1.onrender.com"
+    from = "/*"
+    to = "/"
     status = 200
