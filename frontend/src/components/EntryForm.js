@@ -19,7 +19,7 @@ const EntryForm = () => {
         }
         const entry = {title, body}
 
-        const response = await fetch('/entries', {
+        const response = await fetch('https://jotfull-backend1.onrender.com/api/entries', {
             method: 'POST',
             body: JSON.stringify(entry),
             headers: {
