@@ -13,7 +13,7 @@ const Home = () => {
 
     useEffect(() => {
         const fetchEntries = async () => {
-            const response = await fetch('/api/entries', {
+            const response = await fetch('https://jotfull-backend1.onrender.com/api/entries', {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -28,7 +28,7 @@ const Home = () => {
     }, [dispatch, user])
 
     const handleClick = async (entry) => {
-        const response = await fetch('/api/entries/' + entry._id, {
+        const response = await fetch('https://jotfull-backend1.onrender.com/api/entries/' + entry._id, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${user.token}`
