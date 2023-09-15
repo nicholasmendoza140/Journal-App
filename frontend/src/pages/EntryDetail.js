@@ -16,7 +16,7 @@ const EntryDetail = () => {
 
     useEffect(() => {
         const fetchEntry = async () => {
-            const response = await fetch(`/entries/${entryId}`, {
+            const response = await fetch(`/api/entries/${entryId}`, {
                 headers: {
                     'Authorization': `Bearer ${user.token}`
                 }
@@ -42,7 +42,7 @@ const EntryDetail = () => {
     const handleSave = async (entry) => {
         //api call to update entry
         const newEntry = {editedBody}
-        const response = await fetch('/entries/' + entry._id, {
+        const response = await fetch('/api/entries/' + entry._id, {
             method: 'PATCH',
             body: JSON.stringify({ body: editedBody }),
             headers: {

@@ -1,0 +1,4 @@
+[[redirects]]
+    from = "/*"
+    to = "https://jotfull-backend1.onrender.com"
+    status = 200
