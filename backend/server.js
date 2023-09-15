@@ -10,8 +10,8 @@ const app = express()
 app.use(express.json())
 
 //routes
-app.use('/entries', entryRoutes)
-app.use('/user', userRoutes)
+app.use('/api/entries', entryRoutes)
+app.use('/api/user', userRoutes)
 
 app.get('/', (req, res) => {
     res.json({msg: "Hello"})
